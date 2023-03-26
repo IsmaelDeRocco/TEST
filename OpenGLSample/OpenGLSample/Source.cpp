@@ -228,12 +228,12 @@ void URender()
     glUniformMatrix4fv(viewLoc, 1, GL_FALSE, glm::value_ptr(view));
     glUniformMatrix4fv(projLoc, 1, GL_FALSE, glm::value_ptr(projection));
 
-    // Activate the VBOs contained within the mesh's VAO
+    // Draws first triangle
     glBindVertexArray(gMesh.vao);
-    glBindVertexArray(gMesh2.vao);
-
-    // Draws the triangles
     glDrawElements(GL_TRIANGLES, gMesh.nIndices, GL_UNSIGNED_SHORT, NULL); // Draws the triangle
+
+    // Draws second triangle
+    glBindVertexArray(gMesh2.vao);
     glDrawElements(GL_TRIANGLES, gMesh2.nIndices, GL_UNSIGNED_SHORT, NULL); // Draw the second set of triangles
 
     // Deactivate the Vertex Array Object
